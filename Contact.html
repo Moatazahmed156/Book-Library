@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>E-Book</title>
+    <link rel="stylesheet" href="contact.css">
+    <title>Contact Us - E-Book</title>
 </head>
 
 <body>
@@ -19,7 +19,7 @@
     <div class="container">
         <div class="sideBar">
             <ul>
-                <li class="active">
+                <li>
                     <a href="./index.html">
                         <img src="images/house-solid.svg" alt="">
                         <p>Home</p>
@@ -35,15 +35,29 @@
                         <p>About Us</p>
                     </a>
                 </li>
-                <li><a href="./Contact.html">
+                <li class="active"><a href="./Contact.html">
                         <img src="images/message-solid.svg" alt="">
                         <p>Contact</p>
                     </a>
                 </li>
             </ul>
         </div>
-        <div class="content">
-            <p>Content</p>
+        <div class="contact">
+            <h2>Contact Us</h2>
+            <p>We’d love to hear from you! Reach out with any questions, suggestions, or support needs.</p>
+
+            <div class="contact-info">
+                <p><strong>Email:</strong> support@digitallibrary.com</p>
+                <p><strong>Phone:</strong> +20 123 456 7890</p>
+                <p><strong>Address:</strong> 123 Knowledge Ave, Cairo, Egypt</p>
+            </div>
+
+            <form class="contact-form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" rows="5" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
         </div>
         <div class="rightSide">
             <div class="trendingAuthor">
