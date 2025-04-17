@@ -21,7 +21,7 @@
     <div class="container">
         <div class="sideBar">
             <ul>
-                <li class="active">
+                <li>
                     <a href="./index.html">
                         <img src="images/house-solid.svg" alt="">
                         <p>Home</p>
@@ -45,10 +45,7 @@
             </ul>
         </div>
         <div class="content">
-            <p>Content</p>
-            <div id="content">
-
-            </div>
+            <div class="book-details" id="book-detail"></div>
         </div>
         <div class="rightSide">
             <div class="trendingAuthor">
@@ -143,29 +140,35 @@
         </div>
     </div>
     <script>
-        const Container = document.getElementById("content");
-
+        const bookDetailContainer = document.getElementById("book-detail");
         const booksList = JSON.parse(localStorage.getItem("books"));
-        booksList.map((book, index) => {
-            const bookDiv = document.createElement("div");
-            bookDiv.className = "book";
-            bookDiv.innerHTML = `
-            <a href="book.html?id=${index}" style="text-decoration: none; color: inherit;">
-              <img src="${book.image}" alt="${book.name}">
-              <h3>${book.name.length > 10 ? book.name.slice(0, 7) + "..." : book.name}</h3>
-              </a>
-            <button class="book-button" data-index="${index}">Add To List</button>
-          `;
-            Container.appendChild(bookDiv);
-        });
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get("id");
+        const book = booksList[id];
+
+        bookDetailContainer.innerHTML = `
+        <img src="${book.image}" alt="${book.name}"/>
+        <div class="book-data">
+        <h2>${book.name}</h2>
+        <p><strong>Author:</strong> ${book.author}</p>
+        <p><strong>Publisher:</strong> ${book.publisher}</p>
+        <p><strong>Date:</strong> ${book.date}</p>
+        <p><strong>Classification:</strong> ${book.classification}</p>
+        <p>
+            <strong>Description: </strong> 
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur at, cum possimus architecto quidem officia labore, aperiam ea velit ipsam quaerat ullam quod unde id vero harum nisi ut sint.
+        </p>
+        <button class="book-button">Add to List</button>
+        </div>
+      `;
         document.querySelectorAll(".book-button").forEach(button => {
             button.addEventListener("click", (e) => {
                 const index = e.target.getAttribute("data-index");
 
                 let list = JSON.parse(localStorage.getItem("myBookList")) || [];
 
-                if (!list.includes(index)) {
-                    list.push(index, booksList[index]);
+                if (!list.includes(id)) {
+                    list.push(id, booksList[id]);
                     localStorage.setItem("myBookList", JSON.stringify(list));
                 }
             });
