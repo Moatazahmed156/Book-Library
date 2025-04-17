@@ -66,7 +66,7 @@ body {
       display: flex;
       gap: 10px;
       img {
-        width: 25px;
+        width: 20px;
       }
     }
     .active,
@@ -232,7 +232,7 @@ body {
   }
   a img {
     width: 100%;
-    max-height: 250px;
+    height: 230px;
     object-fit: cover;
     border-radius: 8px 8px 0 0;
   }
@@ -407,6 +407,7 @@ body {
     ul {
       flex-direction: row;
       justify-content: space-between;
+      margin: 0px 10px;
       li {
         padding: 10px 10px 10px 10px;
       }
