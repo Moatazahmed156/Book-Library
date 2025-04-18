@@ -89,7 +89,7 @@ body {
   justify-items: center;
   .active {
     margin: 0px auto 10px 10px;
-    background-color: rgb(58, 58, 189);
+    background-color: #222;
     padding: 10px 20px;
     border-radius: 25px;
     color: white;

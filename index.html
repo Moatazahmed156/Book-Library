@@ -57,27 +57,27 @@
                     <div class="author">
                         <img src="./images/p1.jpg" alt="">
                         <h4>Moataz Ahmed</h4>
-                        <p>Follow</p>
+                        <p onclick="toggleFollow(this)">Follow</p>
                     </div>
                     <div class="author">
                         <img src="./images/p2.jpg" alt="">
                         <h4>Mahmoud Awad</h4>
-                        <p>Follow</p>
+                        <p onclick="toggleFollow(this)">Follow</p>
                     </div>
                     <div class="author">
                         <img src="./images/p3.jpg" alt="">
                         <h4>Mernna Mohamed</h4>
-                        <p>Follow</p>
+                        <p onclick="toggleFollow(this)">Follow</p>
                     </div>
                     <div class="author">
                         <img src="./images/p4.jpg" alt="">
                         <h4>Mohamed Saber</h4>
-                        <p>Follow</p>
+                        <p onclick="toggleFollow(this)">Follow</p>
                     </div>
                     <div class="author ">
                         <img src="./images/p5.jpg" alt="">
                         <h4>Goat</h4>
-                        <p class="followed">Unfollow</p>
+                        <p class="followed" onclick="toggleFollow(this)">Unfollow</p>
                     </div>
                 </div>
             </div>
@@ -170,6 +170,15 @@
                 }
             });
         });
+        function toggleFollow(element) {
+            if (element.classList.contains("followed")) {
+                element.classList.remove("followed");
+                element.textContent = "Follow";
+            } else {
+                element.classList.add("followed");
+                element.textContent = "Unfollow";
+            }
+        }
     </script>
 </body>
 
