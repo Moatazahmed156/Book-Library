@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Contact Us - E-Book</title>
+    <script src="./script.js"></script>
+
+    <title>E-Book</title>
 </head>
 
 <body>
@@ -25,7 +27,7 @@
                         <p>Home</p>
                     </a>
                 </li>
-                <li><a href="./profile.html">
+                <li class="active"><a href="./profile.html">
                         <img src="images/user-solid.svg" alt="">
                         <p>Profile</p>
                     </a>
@@ -35,30 +37,48 @@
                         <p>About Us</p>
                     </a>
                 </li>
-                <li class="active"><a href="./Contact.html">
+                <li><a href="./Contact.html">
                         <img src="images/message-solid.svg" alt="">
                         <p>Contact</p>
                     </a>
                 </li>
             </ul>
         </div>
-        <div class="contact">
-            <h2>Contact Us</h2>
-            <p>We’d love to hear from you! Reach out with any questions, suggestions, or support needs.</p>
-
-            <div class="contact-info">
-                <p><strong>Email:</strong> EBookSupportServices@gmail.com</p>
-                <p><strong>Phone:</strong> +20 101 111 0022</p>
-                <p><strong>Address:</strong> 123 6<sup>th</sup> of October, Giza, Egypt
-                </p>
+        <div class="profile-container">
+            <div class="profile-header">
+                <div class="user-info">
+                    <h2>Naguib Mahfouz</h2>
+                    <p>Member since: Jan 2024</p>
+                    <p>Email: mohamed@example.com</p>
+                </div>
             </div>
+            <div class="section">
+                <h3>📖 Reading History</h3>
+                <ul>
+                    <li>"Can you keep"</li>
+                    <li>"You Don't Know JS"</li>
+                </ul>
+                <div class="section">
+                    <h3>💡 Wishlist</h3>
+                    <ul id="mylist">
 
-            <form class="contact-form">
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <textarea placeholder="Your Message" rows="5" required></textarea>
-                <button type="submit">Send Message</button>
-            </form>
+                    </ul>
+                </div>
+                <div class="section">
+                    <h3>👑Hobbies</h3>
+                    <dl> <strong>Coding</strong>
+                        <dt>"Fun and useful, especially if you like solving problems."</dt>
+                    </dl>
+                    <dl><strong>Reading</strong>
+                        <dt>"Great for learning and expanding your imagination."</dt>
+                    </dl>
+                </div>
+                <div class="section">
+                    <h3>⚙ Account Settings</h3>
+                    <button>Update Profile</button>
+                    <button>Change Password</button>
+                </div>
+            </div>
         </div>
         <div class="rightSide">
             <div class="trendingAuthor">
@@ -67,27 +87,27 @@
                     <div class="author">
                         <img src="./images/p1.jpg" alt="">
                         <h4>Moataz Ahmed</h4>
-                        <p>Follow</p>
+                        <p onclick="toggleFollow(this)">Follow</p>
                     </div>
                     <div class="author">
                         <img src="./images/p2.jpg" alt="">
                         <h4>Mahmoud Awad</h4>
-                        <p>Follow</p>
+                        <p onclick="toggleFollow(this)">Follow</p>
                     </div>
                     <div class="author">
                         <img src="./images/p3.jpg" alt="">
                         <h4>Mernna Mohamed</h4>
-                        <p>Follow</p>
+                        <p onclick="toggleFollow(this)">Follow</p>
                     </div>
                     <div class="author">
                         <img src="./images/p4.jpg" alt="">
                         <h4>Mohamed Saber</h4>
-                        <p>Follow</p>
+                        <p onclick="toggleFollow(this)">Follow</p>
                     </div>
                     <div class="author ">
                         <img src="./images/p5.jpg" alt="">
                         <h4>Goat</h4>
-                        <p class="followed">Unfollow</p>
+                        <p class="followed" onclick="toggleFollow(this)">Unfollow</p>
                     </div>
                 </div>
             </div>
@@ -152,6 +172,44 @@
             </div>
         </div>
     </div>
+    <script>
+        function deleteBookFromLocalStorageByIndex(index) {
+            let wishlist = JSON.parse(localStorage.getItem("myBookList")) || [];
+            if (index >= 0 && index < wishlist.length) {
+                wishlist.splice(index - 1, 2);
+                localStorage.setItem("myBookList", JSON.stringify(wishlist));
+            }
+        }
+        const container = document.getElementById("mylist");
+        const wishlist = JSON.parse(localStorage.getItem("myBookList"));
+        if (wishlist.length > 0) {
+            wishlist.forEach((book, index) => {
+                if (index % 2 !== 0) {
+                    const bookItem = document.createElement("li");
+                    bookItem.textContent = `"${book.name}"`;
+
+                    const deleteButton = document.createElement("button");
+                    deleteButton.textContent = "Delete";
+                    deleteButton.addEventListener("click", () => {
+                        deleteBookFromLocalStorageByIndex(index);
+                        location.reload();
+                    });
+                    bookItem.appendChild(deleteButton);
+                    container.appendChild(bookItem);
+                }
+
+            });
+        } else {
+            const emptyItem = document.createElement("li");
+            emptyItem.textContent = "No books found in your wishlist.";
+            emptyItem.style.color = "gray";
+            emptyItem.style.textAlign = 'center'
+            container.appendChild(emptyItem);
+        }
+    </script>
 </body>
+<style>
+
+</style>
 
 </html>

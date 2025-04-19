@@ -27,7 +27,7 @@
                         <p>Home</p>
                     </a>
                 </li>
-                <li><a href="#">
+                <li><a href="./profile.html">
                         <img src="images/user-solid.svg" alt="">
                         <p>Profile</p>
                     </a>
@@ -167,7 +167,10 @@
                 if (!list.includes(index)) {
                     list.push(index, booksList[index]);
                     localStorage.setItem("myBookList", JSON.stringify(list));
+                    e.target.style.backgroundColor = "green";
+                    e.target.textContent = "Added";
                 }
+
             });
         });
         function toggleFollow(element) {

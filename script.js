@@ -179,5 +179,4 @@ const books = [
     image: "./images/book20.jpg",
   },
 ];
-// Save books to localStorage
 localStorage.setItem("books", JSON.stringify(books));
