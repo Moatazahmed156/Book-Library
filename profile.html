@@ -182,7 +182,7 @@
         }
         const container = document.getElementById("mylist");
         const wishlist = JSON.parse(localStorage.getItem("myBookList"));
-        if (wishlist.length > 0) {
+        if (Array.isArray(wishlist) && wishlist.length > 0) {
             wishlist.forEach((book, index) => {
                 if (index % 2 !== 0) {
                     const bookItem = document.createElement("li");
